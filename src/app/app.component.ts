@@ -20,7 +20,9 @@ export class AppComponent implements OnInit {
   }
 
   sendMessage() {
-    this.chatService.sendMessage(this.message);
+    if (this.message && this.message !== '') {
+      this.chatService.sendMessage(this.message);
+    }
     this.message = '';
   }
 }

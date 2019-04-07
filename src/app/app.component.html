@@ -1,11 +1,18 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div class="chat-container">
+  <div class="chat-header">
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+  <div class="chat-body">
+    <div class="messages-container">
+      <div *ngFor="let message of messages" class="message-row">
+        <p>{{message}}</p>
+      </div>
+    </div>
+    <div class="form-container">
+      <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+      <button (click)="sendMessage()" [disabled]="!message || message == '' ">Envoyer !</button>
+    </div>
+  </div>
 </div>
-<div *ngFor="let message of messages">
-  {{message}}
-</div>
-<input [(ngModel)]="message" />
-<button (click)="sendMessage()">Send</button>
