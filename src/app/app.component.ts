@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from 'src/chat.service';
 
 @Component({
@@ -6,7 +6,8 @@ import { ChatService } from 'src/chat.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   title = 'athaclie-chat';
   message: string;
   messages: Array<string> = new Array();
@@ -24,5 +25,15 @@ export class AppComponent implements OnInit {
       this.chatService.sendMessage(this.message);
     }
     this.message = '';
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch (err) { }
   }
 }
