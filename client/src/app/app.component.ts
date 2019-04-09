@@ -1,7 +1,7 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ChatService } from 'src/chat.service';
+import { faPause, faPlay, faSkull, faStop, faUndo } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
-import { faPlay, faPause, faUndo, faStop} from '@fortawesome/free-solid-svg-icons';
+import { ChatService } from 'src/chat.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +9,15 @@ import { faPlay, faPause, faUndo, faStop} from '@fortawesome/free-solid-svg-icon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewChecked {
+
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   faPlay = faPlay;
   faPause = faPause;
   faUndo = faUndo;
   faStop = faStop;
+  faSkull = faSkull;
 
-  title = 'athaclie-chat';
   message: string;
   messages: Array<string> = new Array();
   timeLeft: number;
@@ -42,9 +43,11 @@ export class AppComponent implements OnInit, AfterViewChecked {
   getTimeLeftStr() {
     return moment.utc(this.timeLeft * 1000).format('HH:mm:ss');
   }
+
   isDanger() {
     return this.timeLeft <= this.alerteTimeLeft;
   }
+
   startTimer() {
     this.chatService.startTimer();
   }

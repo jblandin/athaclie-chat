@@ -1,9 +1,7 @@
 <div class="chat-container container-fluid">
   <div class="chat-header">
-    <h1>
-      Welcome to {{ title }}!
-    </h1>
     <h1 class="display-1" [ngClass]="{'text-danger': isDanger()}">{{getTimeLeftStr()}}</h1>
+    <h1 *ngIf="timeLeft === 0"><fa-icon [icon]="faSkull"></fa-icon> Game over !</h1>
   </div>
   <div class="chat-body">
     <div class="messages-container card" #scrollMe>
@@ -28,15 +26,19 @@
     </form>
   </div>
 </div>
-<div class="toolbar container">
+<div class="container">
   <div class="row mt-4">
-
-    <button type="button" class="col btn btn-success btn-lg" (click)="startTimer()"><fa-icon [icon]="faPlay"></fa-icon> Start</button>&nbsp;
-
-    <button type="button" class="col btn btn-warning btn-lg" (click)="pauseTimer()"><fa-icon [icon]="faPause"></fa-icon> Pause</button>&nbsp;
-
-    <button type="button" class="col btn btn-primary btn-lg" (click)="resetTimer()"><fa-icon [icon]="faUndo"></fa-icon> Reset</button>&nbsp;
-
-    <button type="button" class="col btn btn-danger btn-lg" (click)="stopTimer()"><fa-icon [icon]="faStop"></fa-icon> Stop</button>
+    <button type="button" class="col btn btn-success btn-lg mr-2" (click)="startTimer()">
+      <fa-icon [icon]="faPlay"></fa-icon> Start
+    </button>
+    <button type="button" class="col btn btn-warning btn-lg mr-2" (click)="pauseTimer()">
+      <fa-icon [icon]="faPause"></fa-icon> Pause
+    </button>
+    <button type="button" class="col btn btn-primary btn-lg mr-2" (click)="resetTimer()">
+      <fa-icon [icon]="faUndo"></fa-icon> Reset
+    </button>
+    <button type="button" class="col btn btn-danger btn-lg mr-2" (click)="stopTimer()">
+      <fa-icon [icon]="faStop"></fa-icon> Stop
+    </button>
   </div>
 </div>

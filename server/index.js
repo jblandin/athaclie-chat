@@ -20,8 +20,8 @@ let interval;
 
 io.on('connection', (socket) => {
     console.log('user connected');
-    io.emit('new-message', config.motd);
-    io.emit('time-left', timeLeft);
+    socket.emit('new-message', config.motd);
+    socket.emit('time-left', timeLeft);
 
     socket.on('new-message', newMessage);
 
@@ -43,7 +43,7 @@ const startCounter = () => {
     interval = setInterval(() => {
         timeLeft--;
         io.emit('time-left', timeLeft);
-        if(timeLeft < 0 ){
+        if(timeLeft <= 0 ){
           // The code here will run when the timer has reached zero.
           clearInterval(interval);
           console.log('game over!');
