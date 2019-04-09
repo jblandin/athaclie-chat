@@ -1,7 +1,7 @@
 <div class="chat-container container-fluid">
   <div class="chat-header">
     <h1>
-      Welcome to {{ title }}!
+      Welcome to {{ title }}!  {{timeLeft}}
     </h1>
   </div>
   <div class="chat-body">
@@ -25,5 +25,17 @@
           </div>
       </div>
     </form>
+  </div>
+</div>
+<div class="toolbar container">
+  <div class="row mt-4">
+
+    <button type="button" class="col btn btn-success btn-lg" (click)="startTimer()">Start</button>&nbsp;
+
+    <button type="button" class="col btn btn-warning btn-lg" (click)="pauseTimer()">Pause</button>&nbsp;
+
+    <button type="button" class="col btn btn-primary btn-lg" (click)="resetTimer()">Reset</button>&nbsp;
+
+    <button type="button" class="col btn btn-danger btn-lg" (click)="stopTimer()">Stop</button>
   </div>
 </div>

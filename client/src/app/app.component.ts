@@ -11,6 +11,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   title = 'athaclie-chat';
   message: string;
   messages: Array<string> = new Array();
+  timeLeft: number;
 
   constructor(private chatService: ChatService) {
   }
@@ -18,6 +19,8 @@ export class AppComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
     this.chatService.getMessages()
       .subscribe((message: string) => this.messages.push(message));
+    this.chatService.getTimer()
+      .subscribe((timeLeft: number) => this.timeLeft = timeLeft);
   }
 
   sendMessage() {
@@ -25,6 +28,22 @@ export class AppComponent implements OnInit, AfterViewChecked {
       this.chatService.sendMessage(this.message);
     }
     this.message = '';
+  }
+
+  startTimer() {
+    this.chatService.startTimer();
+  }
+
+  pauseTimer() {
+    this.chatService.pauseTimer();
+  }
+
+  resetTimer() {
+    this.chatService.resetTimer();
+  }
+
+  stopTimer() {
+    this.chatService.stopTimer();
   }
 
   ngAfterViewChecked() {
