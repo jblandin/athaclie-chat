@@ -1,16 +1,16 @@
-let express = require('express')
-let app = express();
+const express = require('express')
+const http = require('http');
+const socketIO = require('socket.io');
 
-let http = require('http');
-let server = http.Server(app);
+const config = require('./config.json');
 
-let socketIO = require('socket.io');
-let io = socketIO(server);
+const app = express();
+const server = http.Server(app);
+const io = socketIO(server);
 
 const port = process.env.PORT || 3000;
 
-const motd = "Bienvenue petit cafard..!";
-const INIT_TIME_LEFT = 60;
+const INIT_TIME_LEFT = config.duree;
 
 
 let timeLeft = INIT_TIME_LEFT;
@@ -20,7 +20,7 @@ let interval;
 
 io.on('connection', (socket) => {
     console.log('user connected');
-    io.emit('new-message', motd);
+    io.emit('new-message', config.motd);
     io.emit('time-left', timeLeft);
 
     socket.on('new-message', newMessage);
