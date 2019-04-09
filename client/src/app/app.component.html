@@ -1,8 +1,9 @@
 <div class="chat-container container-fluid">
   <div class="chat-header">
     <h1>
-      Welcome to {{ title }}!  {{timeLeft}}
+      Welcome to {{ title }}!
     </h1>
+    <h1 class="display-1" [ngClass]="{'text-danger': isDanger()}">{{getTimeLeftStr()}}</h1>
   </div>
   <div class="chat-body">
     <div class="messages-container card" #scrollMe>
@@ -30,12 +31,12 @@
 <div class="toolbar container">
   <div class="row mt-4">
 
-    <button type="button" class="col btn btn-success btn-lg" (click)="startTimer()">Start</button>&nbsp;
+    <button type="button" class="col btn btn-success btn-lg" (click)="startTimer()"><fa-icon [icon]="faPlay"></fa-icon> Start</button>&nbsp;
 
-    <button type="button" class="col btn btn-warning btn-lg" (click)="pauseTimer()">Pause</button>&nbsp;
+    <button type="button" class="col btn btn-warning btn-lg" (click)="pauseTimer()"><fa-icon [icon]="faPause"></fa-icon> Pause</button>&nbsp;
 
-    <button type="button" class="col btn btn-primary btn-lg" (click)="resetTimer()">Reset</button>&nbsp;
+    <button type="button" class="col btn btn-primary btn-lg" (click)="resetTimer()"><fa-icon [icon]="faUndo"></fa-icon> Reset</button>&nbsp;
 
-    <button type="button" class="col btn btn-danger btn-lg" (click)="stopTimer()">Stop</button>
+    <button type="button" class="col btn btn-danger btn-lg" (click)="stopTimer()"><fa-icon [icon]="faStop"></fa-icon> Stop</button>
   </div>
 </div>
