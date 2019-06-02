@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChatService } from 'src/chat.service';
+import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { ChatService } from 'src/chat.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [ChatService],
   bootstrap: [AppComponent]
